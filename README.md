@@ -19,7 +19,7 @@ Create tsconfig.json by `npx tsc --init`
 Setup outDir,rootDir,baseUrl and also relative paths as below
 
 ```json
-    "baseUrl": "./src"
+    "baseUrl": "./src",
     "paths": {
       "@services/*": ["app/path/to/services/*"],
       "@components/*": ["app/somewhere/deeply/nested/*"],
