@@ -56,6 +56,12 @@ add dep `yarn add express`
 
 ## Step 9
 
-setup the server
+Setup the server
 
-## Step 10
+At this point you should have a basic server continue next for typeorm setup
+
+# Typeorm Setup
+
+## Step 1
+
+Install typeorm reflect-metadata and driver `yarn add typeorm reflect-metadata pg`
