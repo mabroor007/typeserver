@@ -65,3 +65,103 @@ At this point you should have a basic server continue next for typeorm setup
 ## Step 1
 
 Install typeorm reflect-metadata and driver `yarn add typeorm reflect-metadata pg`
+
+## Step 2
+
+Enable options in tsconfig
+
+```json
+  "emitDecoratorMetadata": true,
+  "experimentalDecorators": true,
+```
+
+## Step 3
+
+Add path to entities and migration in tsconfig path object
+
+```json
+      "@entity/*": ["DB/entity/*"],
+      "@migration/*": ["DB/migration/*"],
+```
+
+## Step 4
+
+Add es6 in lib in tsconfig
+
+```json
+    "lib": [
+      "es6"
+    ]
+```
+
+Disable strict property initialization in tsconfig
+
+```json
+    "strictPropertyInitialization": false
+```
+
+## Step 5
+
+Create ormconfig.json
+
+```json
+{
+  "type": "postgres",
+  "host": "localhost",
+  "port": 5432,
+  "username": "postgres",
+  "password": "pwd",
+  "database": "test",
+  "synchronize": true,
+  "logging": false,
+  "entities": ["src/DB/entity/**/*.ts"],
+  "migrations": ["src/DB/migration/**/*.ts"],
+  "subscribers": ["src/DB/subscriber/**/*.ts"]
+}
+```
+
+## Step 6
+
+NOW Application dir looks like this
+
+```
+APPLICATION----
+    |
+    |- src/
+        |- DB/
+           |-entity/
+                |-photo.ts
+           |-migration/
+           |-subscriber/
+        |
+        |-index.ts
+```
+
+tsconfig.json will look like this
+
+```json
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "lib": ["es6", "es5"],
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "strict": true,
+    "strictPropertyInitialization": false,
+    "baseUrl": "./src",
+    "paths": {
+      "@services/*": ["services/*"],
+      "@entity/*": ["DB/entity/*"],
+      "@migration/*": ["DB/migration/*"],
+      "@components/*": ["components/*"],
+      "@environments/*": ["environments/*"]
+    },
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  }
+}
+```
