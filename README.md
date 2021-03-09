@@ -16,16 +16,7 @@ Create tsconfig.json by `npx tsc --init`
 
 ## Step 4
 
-Setup outDir,rootDir,baseUrl and also relative paths as below
-
-```json
-    "baseUrl": "./src",
-    "paths": {
-      "@services/*": ["app/path/to/services/*"],
-      "@components/*": ["app/somewhere/deeply/nested/*"],
-      "@environments/*": ["environments/*"]
-    }
-```
+Setup outDir as `dist`,rootDir as `src`
 
 ## Step 5
 
@@ -77,19 +68,13 @@ Enable options in tsconfig
 
 ## Step 3
 
-Add path to entities and migration in tsconfig path object
-
-```json
-      "@entity/*": ["DB/entity/*"],
-      "@migration/*": ["DB/migration/*"],
-```
-
 ## Step 4
 
 Add es6 in lib in tsconfig
 
 ```json
     "lib": [
+      "es5",
       "es6"
     ]
 ```
@@ -120,6 +105,8 @@ Create ormconfig.json
 }
 ```
 
+Or Pass Options Object to createConnection function
+
 ## Step 6
 
 NOW Application dir looks like this
@@ -131,8 +118,6 @@ APPLICATION----
         |- DB/
            |-entity/
                 |-photo.ts
-           |-migration/
-           |-subscriber/
         |
         |-index.ts
 ```
@@ -149,14 +134,6 @@ tsconfig.json will look like this
     "rootDir": "./src",
     "strict": true,
     "strictPropertyInitialization": false,
-    "baseUrl": "./src",
-    "paths": {
-      "@services/*": ["services/*"],
-      "@entity/*": ["DB/entity/*"],
-      "@migration/*": ["DB/migration/*"],
-      "@components/*": ["components/*"],
-      "@environments/*": ["environments/*"]
-    },
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
