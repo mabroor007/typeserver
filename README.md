@@ -28,3 +28,23 @@ Setup outDir,rootDir,baseUrl and also relative paths as below
 ```
 
 ## Step 5
+
+Change main file in package.json to `src/index.ts`
+
+## Step 6
+
+Setup scripts in package.json
+
+```json
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "dev": "ts-node-dev src/index.ts",
+    "build":"tsc"
+  },
+```
+
+## Step 7
+
+Create src/index.ts and run `yarn start`
+
+Note! This should run successfully.
