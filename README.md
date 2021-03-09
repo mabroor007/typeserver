@@ -37,7 +37,7 @@ Setup scripts in package.json
 
 ```json
   "scripts": {
-    "start": "ts-node src/index.ts",
+    "start": "node dist/index.js",
     "dev": "ts-node-dev src/index.ts",
     "build":"tsc"
   },
