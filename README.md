@@ -38,6 +38,7 @@ Setup scripts in package.json
 ```json
   "scripts": {
     "start": "node dist/index.js",
+    "_run": "ts-node src/index.ts",
     "dev": "ts-node-dev src/index.ts",
     "build":"tsc"
   },
@@ -48,3 +49,13 @@ Setup scripts in package.json
 Create src/index.ts and run `yarn start`
 
 Note! This should run successfully.
+
+## Step 8
+
+add dep `yarn add express`
+
+## Step 9
+
+setup the server
+
+## Step 10
