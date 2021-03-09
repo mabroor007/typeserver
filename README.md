@@ -15,3 +15,16 @@ Install dev-dep `yarn add -D typescript ts-node ts-node-dev @types/node @types/e
 Create tsconfig.json by `npx tsc --init`
 
 ## Step 4
+
+Setup outDir,rootDir,baseUrl and also relative paths as below
+
+```json
+    "baseUrl": "./src"
+    "paths": {
+      "@services/*": ["app/path/to/services/*"],
+      "@components/*": ["app/somewhere/deeply/nested/*"],
+      "@environments/*": ["environments/*"]
+    }
+```
+
+## Step 5
