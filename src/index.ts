@@ -4,7 +4,11 @@ import Photo from "./DB/entity/Photo";
 
 // Env
 const PORT = process.env.PORT || 4000;
-const HOST = process.env.HOST || "localhost";
+const DBHOST = process.env.DBHOST || "localhost";
+const DBPASSWORD = process.env.DBPASSWORD || "pwd";
+const DBUSER = process.env.DBUSER || "postgres";
+const DB = process.env.DB || "test";
+const DBPORT = process.env.DBPORT || 5432;
 
 // Creating the app
 const app = express();
@@ -23,11 +27,11 @@ let connectionAtempts = 0;
 function startServer() {
   createConnection({
     type: "postgres",
-    host: HOST,
-    port: 5432,
-    username: "postgres",
-    password: "pwd",
-    database: "test",
+    host: DBHOST,
+    port: Number(DBPORT),
+    username: DBUSER,
+    password: DBPASSWORD,
+    database: DB,
     entities: [Photo],
     synchronize: true,
     logging: false,
@@ -41,8 +45,8 @@ function startServer() {
     .catch(() => {
       if (connectionAtempts > 5) return;
       connectionAtempts++;
-      console.log("trying to connect again...");
-      startServer();
+      console.log("Trying to connect again...");
+      setTimeout(startServer, 2000);
     });
 }
 
